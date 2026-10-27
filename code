@@ -1,0 +1,34 @@
+budget = int(input("Enter your budget: "))
+print("Your budget is: PHP", budget)
+
+expenses = []
+total = 0
+
+while True:
+    print()
+    print("1. Add Expense")
+    print("2. View Expenses")
+    print("3. Exit")
+    choice = int(input("Enter your choice: "))
+
+    if choice == 1:
+        category = input("Category: ")
+        amount = int(input("Amount: "))
+        if total + amount > budget:
+            print("Cannot add! Overspend. Remaining budget: PHP", budget - total)
+        else:
+            expenses.append(category + ": PHP " + str(amount))
+            total = total + amount
+            print("Saved! Remaining budget: PHP", budget - total)
+    elif choice == 2:
+        if expenses == []:
+            print("No expenses yet.")
+        else:
+            for e in expenses:
+                print("-", e)
+            print("Total spent: PHP", total)
+            print("Remaining: PHP", budget - total)
+    elif choice == 3:
+        break
+    else:
+        print("Invalid choice")
